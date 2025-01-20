@@ -1,0 +1,45 @@
+# ==============================================================================
+#                           SNAKEMAKE RUNTIME ARGUMENTS
+# ==============================================================================
+
+# Rule-specific resources, using Snakemake keywords
+set-resources:
+    <rule_name>:
+        partition: 'other_partition'  # Partition differing from default
+        mem_mb: 1024  # Memory in MB
+        runtime: 60  # Runtime in minutes
+
+# Rule-specific number of CPUs, using Snakemake keywords
+set-threads:
+    <rule_name>:
+        threads: 24
+
+# Maximum number of jobs to submit concurrently (can be 'unlimited' or a number)
+jobs: 500
+
+# Number of cores used by local snakemake rules
+local-cores: 1
+
+# Maximum number of jobs to submit per timespan. Format: <number>/<timespan>
+max-jobs-per-timespan: '150/1s'  # Currently bugged, so use a high value for now
+
+# Maximum number of job status checks per second
+max-status-checks-per-second: 10
+
+# Number of times Snakemake tries to restart a failed job
+restart-times: 1
+
+
+
+# ==============================================================================
+#                            DO NOT EDIT THIS SECTION
+# ==============================================================================
+
+# Executor to use for job submission
+executor: 'cluster-generic'
+
+# Cluster submission script
+cluster-generic-submit-cmd: 'submit.py'
+
+# Cluster job status script
+cluster-generic-status-cmd: 'status.py'

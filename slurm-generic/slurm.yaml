@@ -1,0 +1,29 @@
+# Values for slurm parameters to use with all jobs, using Snakemake keywords
+# See https://slurm.schedmd.com/sbatch.html for a list of all available parameters
+# Syntax is <slurm_parameter>: value.
+# For example, '--mail-type: END' should be written as mail-type: 'END'
+global_options:
+    partition: 'cpu'  # SLURM partition to use in job submission. Use 'sinfo' to check available partitions ('cpu' or 'gpu' on Curnagl/Urblauna)
+    account: 'user_account'  # SLURM account to use in job submission. Use 'Sproject' to check available accounts
+    # Can also accomodate for global resource settings following sbatch syntax:
+    # cpus-per-task: 2  # Number of CPUs for the job
+    # mem: 1G  # Memory. Format is <number><unit>, unit can be [K|M|G|T]
+    # time: 0-8:00:00  # Maximum runtime. Here in D-H:M:S format, see https://slurm.schedmd.com/sbatch.html#OPT_time for a list of accepted formats
+
+# Syntax for slurm submission options
+options:
+    threads: --cpus-per-task={}
+    mem: --mem={}
+    mem_mb: --mem={}
+    log: --output={}.cluster.o --error={}.cluster.e
+    runtime: --time={}
+    partition: --partition={}
+
+# Partitions to remove from submit list
+blacklist:
+    - interactive
+
+# Scheduler settings
+scheduler:
+    partitions_file: 'partitions.yaml'  # File where partition information will be stored
+    partitions_update_days: 1  # Rate at which to update partition information, in days

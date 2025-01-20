@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Determine path of profile directories
 SLURM_CFG_PATH=~/.config/snakemake
 if [ $# -eq 1 ] ; then
     SLURM_CFG_PATH=$SLURM_CFG_PATH/$1
@@ -7,5 +8,9 @@ else
     SLURM_CFG_PATH=$SLURM_CFG_PATH/slurm
 fi
 
-mkdir -p $SLURM_CFG_PATH
+# Create directories
+mkdir -p $SLURM_CFG_PATH "$SLURM_CFG_PATH-generic"
+
+# Copy profiles into profile directories
 cp -rf ./slurm/* $SLURM_CFG_PATH
+cp -rf ./slurm-generic/* "$SLURM_CFG_PATH-generic"
