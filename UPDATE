@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Determine path of profile directories
 SLURM_CFG_PATH=~/.config/snakemake
 if [ $# -eq 1 ] ; then
     SLURM_CFG_PATH=$SLURM_CFG_PATH/$1
@@ -7,5 +8,5 @@ else
     SLURM_CFG_PATH=$SLURM_CFG_PATH/slurm
 fi
 
-mkdir -p $SLURM_CFG_PATH
-cp -rf ./slurm/*.py $SLURM_CFG_PATH
+# Copy updated scripts into profile directories
+cp -rf ./slurm-generic/*.py $SLURM_CFG_PATH
