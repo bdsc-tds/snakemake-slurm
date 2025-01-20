@@ -27,10 +27,10 @@ set-threads:
     <rule_name>:
         threads: 24
 
-# # Path to directory to store SLURM logs
+# Path to directory to store SLURM logs
 slurm-logdir: '/path/to/slurm/logs'
 
-# # Keep SLURM logs even when job is successful (True/False)
+# Keep SLURM logs even when job is successful (True/False)
 slurm-keep-successful-logs: True
 
 # Maximum number of jobs to submit concurrently (can be 'unlimited' or a number)
