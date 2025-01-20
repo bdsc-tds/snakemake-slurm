@@ -232,7 +232,7 @@ class SlurmScheduler:
                     suitable = False
                 elif self.submission_settings['threads'] and int(self.submission_settings['threads']) > int(data['CPUS']):
                     suitable = False
-                elif self.submission_settings['memory'] and int(self.submission_settings['memory']) > int(data['MEMORY']):
+                elif self.submission_settings['mem'] and int(self.submission_settings['mem']) > int(data['MEMORY']):
                     suitable = False
                 elif self.submission_settings['mem_mb'] and int(self.submission_settings['mem_mb']) > int(data['MEMORY']):
                     suitable = False
