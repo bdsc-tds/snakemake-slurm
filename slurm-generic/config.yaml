@@ -43,3 +43,6 @@ cluster-generic-submit-cmd: 'submit.py'
 
 # Cluster job status script
 cluster-generic-status-cmd: 'status.py'
+
+# Cluster job cancel command
+cluster-generic-cancel-cmd: 'scancel'
